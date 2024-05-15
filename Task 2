@@ -1,0 +1,38 @@
+// Simple Calculator 
+/* Description : This calculator performs only four operations : Addition, Substraction, Multiplication, Division.
+
+
+
+    #include <iostream>
+    using namespace std;
+    void calculate(int a , int b){
+        char ch ;
+        cout<<"Enter operation : " ;
+        cin>>ch; 
+        switch(ch){
+            case '+' : 
+                cout<<"Sum of "<<a<<" and "<<b<<" is : "<<(a+b) ;
+                break;
+            case '-' : 
+                cout<<"Differance of "<<a<<" and "<<b<<" is : "<<(a-b);
+                break;
+            case '*' :
+                cout<<"Multiplication of "<<a<<" and "<<b<<" is : "<<(a*b);
+                break;
+            case '/' : 
+                cout<<"Division of "<<a<<" and "<<b<<" is : "<<(a/b);
+                break;
+            default :
+                cout<<"Invalid operation" ;
+        }
+    }
+    int main(){
+        cout<<"Welcome to this Simple Calculator."<<endl<<endl;
+        int a,b;
+        cout<<"Enter first number : ";
+        cin>>a;
+        cout<<"Enter second number : ";
+        cin>>b;
+        calculate(a,b);
+    return 0;
+    }
