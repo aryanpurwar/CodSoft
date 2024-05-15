@@ -1,0 +1,38 @@
+// Simple Number Guessing Game 
+/* Simple Description : In this code , user is given two inputs, lower limit and upper limit in which user decides the limits after that num variable stores the random number b/w the limits, and youn have to guess the number.  */
+
+
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+    cout << "Guess My Number Game"<<endl<<endl;
+    int a,b;
+    cout<<"Enter the lower limit of guessing : ";
+    cin>>a;
+    cout<<"Enter the upper limit of guessing : ";
+    cin>>b;
+	int num, guess, tries = 0;
+	num = rand() % b + a; 
+
+
+	do
+	{
+		cout << "Enter a guess between "<<a<< " and "<<b<<" : " ;
+		cin >> guess;
+		tries++;
+
+		if (guess > num)
+			cout << "Too high!\n\n";
+		else if (guess < num)
+			cout << "Too low!\n\n";
+		else
+			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
+	} while (guess != num);
+
+	return 0;
+}
