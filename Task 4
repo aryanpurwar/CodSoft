@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Task {
+    string description;
+    bool completed;
+};
+
+Task taskList[100];
+int taskCount = 0; 
+
+void addTask() {
+    if (taskCount < 100) {
+        cout << "Enter task description: ";
+        cin >> taskList[taskCount].description;
+        taskList[taskCount].completed = false;
+        taskCount++;
+    } else {
+        cout << "Task list is full." << endl;
+    }
+}
+
+void viewTasks() {
+    cout << "Task List:" << endl;
+    for (int i = 0; i < taskCount; i++) {
+        cout << "[" << (taskList[i].completed? "X" : " ") << "] " << taskList[i].description << endl;
+    }
+}
+
+void markTaskAsCompleted() {
+    int taskNumber;
+    cout << "Enter task number to mark as completed: ";
+    cin >> taskNumber;
+    if (taskNumber >= 1 && taskNumber <= taskCount) {
+        taskList[taskNumber - 1].completed = true;
+    } else {
+        cout << "Invalid task number." << endl;
+    }
+}
+
+void deleteTask() {
+    int taskNumber;
+    cout << "Enter task number to delete: ";
+    cin >> taskNumber;
+    if (taskNumber >= 1 && taskNumber <= taskCount) {
+        for (int i = taskNumber - 1; i < taskCount - 1; i++) {
+            taskList[i] = taskList[i + 1];
+        }
+        taskCount--;
+    } else {
+        cout << "Invalid task number." << endl;
+    }
+}
+
+int main() {
+    while (true) {
+        cout << "To-Do List Menu:" << endl;
+        cout << "1. Add Task" << endl;
+        cout << "2. View Tasks" << endl;
+        cout << "3. Mark Task as Completed" << endl;
+        cout << "4. Delete Task" << endl;
+        cout << "5. Exit" << endl;
+        int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                addTask();
+                break;
+            case 2:
+                viewTasks();
+                break;
+            case 3:
+                markTaskAsCompleted();
+                break;
+            case 4:
+                deleteTask();
+                break;
+            case 5:
+                return 0;
+            default:
+                cout << "Invalid choice." << endl;
+        }
+    }
+    return 0;
+}
